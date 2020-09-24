@@ -15,7 +15,7 @@ class CreatePesananDetailsTable extends Migration
     {
         Schema::create('pesanan_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('menu_id');
+            $table->integer('produk_id');
             $table->integer('pesanan_id');
             $table->integer('jumlah');
             $table->integer('jumlah_harga');

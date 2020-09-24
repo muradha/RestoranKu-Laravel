@@ -10,7 +10,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $menu->nama_menu }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $produk->nama_produk }}</li>
               </ol>
             </nav>
         </div>
@@ -19,33 +19,33 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="{{ url('uploads') }}/{{ $menu->gambar }}" class="rounded mx-auto d-block" width="100%" alt=""> 
+                            <img src="{{ url('uploads') }}/{{ $produk->gambar }}" class="rounded mx-auto d-block" width="100%" alt=""> 
                         </div>
                         <div class="col-md-6 mt-5">
-                            <h2>{{ $menu->nama_menu }}</h2>
+                            <h2>{{ $produk->nama_produk }}</h2>
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td>Harga</td>
                                         <td>:</td>
-                                        <td>Rp. {{ number_format($menu->harga) }}</td>
+                                        <td>Rp. {{ number_format($produk->harga) }}</td>
                                     </tr>
                                     <tr>
                                         <td>Stok</td>
                                         <td>:</td>
-                                        <td>{{ number_format($menu->stok) }}</td>
+                                        <td>{{ number_format($produk->jumlah) }}</td>
                                     </tr>
                                     <tr>
                                         <td>Keterangan</td>
                                         <td>:</td>
-                                        <td>{{ $menu->keterangan }}</td>
+                                        <td>{{ $produk->keterangan }}</td>
                                     </tr>
                                    
                                     <tr>
                                         <td>Jumlah Pesan</td>
                                         <td>:</td>
                                         <td>
-                                             <form method="post" action="{{ url('pesan') }}/{{ $menu->id }}" >
+                                             <form method="post" action="{{ url('pesan') }}/{{ $produk->id }}" >
                                             @csrf
                                                 <input type="text" name="jumlah_pesan" class="form-control" required="">
                                                 <button type="submit" class="btn btn-info mt-2"><i class="fa fa-shopping-cart"></i> Masukkan Keranjang</button>

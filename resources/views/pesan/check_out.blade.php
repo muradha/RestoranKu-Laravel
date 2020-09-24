@@ -37,11 +37,11 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>
-                                    <img src="{{ url('uploads') }}/{{ $pesanan_detail->menu->gambar }}" width="100" alt="...">
+                                    <img src="{{ url('uploads') }}/{{ $pesanan_detail->produk->gambar }}" width="100" alt="...">
                                 </td>
-                                <td>{{ $pesanan_detail->menu->nama_menu }}</td>
+                                <td>{{ $pesanan_detail->produk->nama_produk }}</td>
                                 <td>{{ $pesanan_detail->jumlah }} kain</td>
-                                <td align="right">Rp. {{ number_format($pesanan_detail->menu->harga) }}</td>
+                                <td align="right">Rp. {{ number_format($pesanan_detail->produk->harga) }}</td>
                                 <td align="right">Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
                                 <td>
                                     <form action="{{ url('check-out') }}/{{ $pesanan_detail->id }}" method="post">

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Menu;
+use App\Produk;
 use App\Pesanan;
 use App\User;
 use App\PesananDetail;
@@ -19,18 +19,18 @@ class PesanController extends Controller
 
     public function index($id)
     {
-    	$menu = Menu::where('id', $id)->first();
+    	$produk = Produk::where('id', $id)->first();
 
-    	return view('pesan.index', compact('menu'));
+    	return view('pesan.index', compact('produk'));
     }
 
     public function pesan(Request $request, $id)
     {	
-    	$menu = Menu::where('id', $id)->first();
+    	$produk = Produk::where('id', $id)->first();
     	$tanggal = Carbon::now();
 
-    	//validasi apakah melebihi stok
-    	if($request->jumlah_pesan > $menu->stok)
+    	//validasi apakah melebihi jumlah
+    	if($request->jumlah_pesan > $produk->jumlah)
     	{
     		return redirect('pesan/'.$id);
     	}
@@ -54,30 +54,30 @@ class PesanController extends Controller
     	$pesanan_baru = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
 
     	//cek pesanan detail
-    	$cek_pesanan_detail = PesananDetail::where('menu_id', $menu->id)->where('pesanan_id', $pesanan_baru->id)->first();
+    	$cek_pesanan_detail = PesananDetail::where('produk_id', $produk->id)->where('pesanan_id', $pesanan_baru->id)->first();
     	if(empty($cek_pesanan_detail))
     	{
     		$pesanan_detail = new PesananDetail;
-	    	$pesanan_detail->menu_id = $menu->id;
+	    	$pesanan_detail->produk_id = $produk->id;
 	    	$pesanan_detail->pesanan_id = $pesanan_baru->id;
 	    	$pesanan_detail->jumlah = $request->jumlah_pesan;
-	    	$pesanan_detail->jumlah_harga = $menu->harga*$request->jumlah_pesan;
+	    	$pesanan_detail->jumlah_harga = $produk->harga*$request->jumlah_pesan;
 	    	$pesanan_detail->save();
     	}else 
     	{
-    		$pesanan_detail = PesananDetail::where('menu_id', $menu->id)->where('pesanan_id', $pesanan_baru->id)->first();
+    		$pesanan_detail = PesananDetail::where('produk_id', $produk->id)->where('pesanan_id', $pesanan_baru->id)->first();
 
     		$pesanan_detail->jumlah = $pesanan_detail->jumlah+$request->jumlah_pesan;
 
     		//harga sekarang
-    		$harga_pesanan_detail_baru = $menu->harga*$request->jumlah_pesan;
+    		$harga_pesanan_detail_baru = $produk->harga*$request->jumlah_pesan;
 	    	$pesanan_detail->jumlah_harga = $pesanan_detail->jumlah_harga+$harga_pesanan_detail_baru;
 	    	$pesanan_detail->update();
     	}
 
     	//jumlah total
     	$pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
-    	$pesanan->jumlah_harga = $pesanan->jumlah_harga+$menu->harga*$request->jumlah_pesan;
+    	$pesanan->jumlah_harga = $pesanan->jumlah_harga+$produk->harga*$request->jumlah_pesan;
     	$pesanan->update();
     	
         Alert::success('Pesanan Sukses Masuk Keranjang', 'Success');
@@ -136,9 +136,9 @@ class PesanController extends Controller
 
         $pesanan_details = PesananDetail::where('pesanan_id', $pesanan_id)->get();
         foreach ($pesanan_details as $pesanan_detail) {
-            $menu = Menu::where('id', $pesanan_detail->menu_id)->first();
-            $menu->stok = $menu->stok-$pesanan_detail->jumlah;
-            $menu->update();
+            $produk = Produk::where('id', $pesanan_detail->produk_id)->first();
+            $produk->jumlah = $produk->jumlah-$pesanan_detail->jumlah;
+            $produk->update();
         }
 
 

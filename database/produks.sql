@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Sep 2020 pada 11.23
+-- Waktu pembuatan: 24 Sep 2020 pada 12.30
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.2
 
@@ -19,31 +19,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restoran`
+-- Database: `arkademy`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menus`
+-- Struktur dari tabel `produks`
 --
 
-CREATE TABLE `menus` (
+CREATE TABLE `produks` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_barang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_produk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `harga` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `stok` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jumlah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `menus`
+-- Dumping data untuk tabel `produks`
 --
 
-INSERT INTO `menus` (`id`, `nama_barang`, `gambar`, `harga`, `stok`, `keterangan`, `created_at`, `updated_at`) VALUES
+INSERT INTO `produks` (`id`, `nama_produk`, `gambar`, `harga`, `jumlah`, `keterangan`, `created_at`, `updated_at`) VALUES
 (1, 'Ayam Geprek', 'ayam_geprek.jpg', '20000', '5', 'Ayam geprek dengan sensasi pedas gurihnya, dan juga rasa crispy yang khas', '2020-09-23 17:00:00', '2020-09-23 17:00:00'),
 (2, 'Nasi Goreng', 'nasi_goreng.jpg', '18000', '10', 'Nasi goreng istimewa dengan sosis, telur, kerupuk, dan mentimun.', '2020-09-23 17:00:00', '2020-09-23 17:00:00'),
 (3, 'Mie Ayam Bakso', 'bakso.jpg', '16000', '8', 'Mie ayam bakso dengan rempah yang khas ditambah pangsit dan jamur', '2020-09-23 17:00:00', '2020-09-23 17:00:00');
@@ -53,9 +53,9 @@ INSERT INTO `menus` (`id`, `nama_barang`, `gambar`, `harga`, `stok`, `keterangan
 --
 
 --
--- Indeks untuk tabel `menus`
+-- Indeks untuk tabel `produks`
 --
-ALTER TABLE `menus`
+ALTER TABLE `produks`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -63,9 +63,9 @@ ALTER TABLE `menus`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `menus`
+-- AUTO_INCREMENT untuk tabel `produks`
 --
-ALTER TABLE `menus`
+ALTER TABLE `produks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 

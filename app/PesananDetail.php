@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PesananDetail extends Model
 {
-    public function menu()
+    public function produk()
 	{
-	      return $this->belongsTo('App\Menu','menu_id', 'id');
+	      return $this->belongsTo('App\Produk','produk_id', 'id');
 	}
 
 	public function pesanan()

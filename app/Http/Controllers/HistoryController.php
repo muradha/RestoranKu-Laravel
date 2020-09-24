@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Menu;
+use App\Produk;
 use App\Pesanan;
 use App\User;
 use App\PesananDetail;
