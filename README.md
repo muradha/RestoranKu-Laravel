@@ -1,5 +1,7 @@
 <h1 align="center">RestoranKu</h1>
+
 ![Capture](https://user-images.githubusercontent.com/63029812/94124430-2e575b00-fe7f-11ea-8dab-6814ac63b8d7.PNG)
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
